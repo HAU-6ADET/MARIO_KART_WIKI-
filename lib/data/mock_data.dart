@@ -16,6 +16,7 @@ class MockData {
       id: 'mario',
       name: 'Mario',
       initials: 'MR',
+      imageAsset: 'assets/characters/mario.png'
       avatarColor: Color(0xFFE84A3B),
       characterClass: CharacterClass.balanced,
       subtitle: 'All-Round Racer',
