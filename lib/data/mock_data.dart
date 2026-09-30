@@ -135,7 +135,7 @@ class MockData {
     ),
     Track(
       id: 'moo_moo_meadows',
-      imageAsset: 'assets/tracks/moo_moo_meadows.png',
+      imageAsset: 'assets/tracks/moo_moo_meadow.png',
       name: 'Moo Moo Meadows',
       cup: 'Flower Cup',
       difficulty: 'Easy',
