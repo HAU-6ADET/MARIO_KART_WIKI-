@@ -135,6 +135,7 @@ class MockData {
     ),
     Track(
       id: 'moo_moo_meadows',
+      imageAsset: 'assets/tracks/moo_moo_meadows.png',
       name: 'Moo Moo Meadows',
       cup: 'Flower Cup',
       difficulty: 'Easy',
@@ -144,8 +145,9 @@ class MockData {
       strategyTips: ['Great track to practice drift-boosting'],
     ),
     Track(
-      id: 'dry_bones_burnout',
-      name: 'Dry Bones Burnout',
+      id: 'dry_dry_dessert',
+      imageAsset: 'assets/tracks/dry_dry_dessert.png',
+      name: 'Dry Dry Desert',
       cup: 'Shell Cup',
       difficulty: 'Medium',
       tileColor: AppColors.secondary,
@@ -155,6 +157,7 @@ class MockData {
     ),
     Track(
       id: 'crown_city',
+      imageAsset: 'assets/tracks/crown_city.png',
       name: 'Crown City',
       cup: 'Star Cup',
       difficulty: 'Medium',
