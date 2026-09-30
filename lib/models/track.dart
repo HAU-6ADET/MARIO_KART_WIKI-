@@ -15,6 +15,16 @@ class Track {
   final List<String> hazards;
   final List<String> strategyTips;
 
+  /// Optional asset path for a top-down map/course image, e.g.
+  /// 'assets/tracks/rainbow_road.png'.
+  ///
+  /// Mirrors Character.imageAsset: no image files ship with this project —
+  /// see assets/tracks/README.md. When this is null (the default), the
+  /// track's flag-icon tile color is used as the fallback everywhere a map
+  /// image would appear, so nothing in the UI needs to change to "turn on"
+  /// images later — just add the file and set this path.
+  final String? imageAsset;
+
   const Track({
     required this.id,
     required this.name,
@@ -24,5 +34,6 @@ class Track {
     this.shortcuts = const [],
     this.hazards = const [],
     this.strategyTips = const [],
+    this.imageAsset,
   });
 }

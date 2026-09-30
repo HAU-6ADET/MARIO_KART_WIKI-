@@ -125,6 +125,7 @@ class MockData {
     Track(
       id: 'rainbow_road',
       name: 'Rainbow Road',
+      imageAsset: 'assets/tracks/rainbow_road.png',
       cup: 'Special Cup',
       difficulty: 'Hard',
       tileColor: AppColors.dataBlue,

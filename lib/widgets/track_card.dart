@@ -2,9 +2,10 @@ import 'package:flutter/material.dart';
 
 import '../models/track.dart';
 import '../theme/theme.dart';
+import 'track_map_image.dart';
 
-/// A single track row: colored flag block on the left, name/cup/difficulty
-/// on a dark panel to the right.
+/// A single track row: map image (or colored flag block, if no image is
+/// set) on the left, name/cup/difficulty on a dark panel to the right.
 class TrackCard extends StatelessWidget {
   final Track track;
   final VoidCallback onTap;
@@ -25,12 +26,16 @@ class TrackCard extends StatelessWidget {
           child: Row(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
-              Container(
+              // Fixed 96x96: gives TrackMapImage a concrete size to decode
+              // to (see its cacheWidth/cacheHeight), so a large source PNG
+              // is never fully decoded just to be shown as a small tile
+              // here — important since this widget repeats per row in a
+              // scrolled list.
+              TrackMapImage(
+                imageAsset: track.imageAsset,
+                fallbackColor: track.tileColor,
                 width: 96,
-                constraints: const BoxConstraints(minHeight: 96),
-                color: track.tileColor,
-                alignment: Alignment.center,
-                child: const Icon(Icons.flag_rounded, color: Colors.black87, size: 28),
+                height: 96,
               ),
               Expanded(
                 child: Padding(
