@@ -198,7 +198,6 @@ class MockData {
       weight: 0.6,
       handling: 0.5,
       traction: 0.6,
-      traction: 0.5,
     ),
         Kart(
       id: 'MR.Soooby',
