@@ -167,6 +167,7 @@ class MockData {
       hazards: ['Narrow city streets, tight corners'],
       strategyTips: ['Brake earlier than you think into the plaza'],
     ),
+    
   ];
 
   // Extrapolated — see lib/models/kart.dart.
@@ -188,6 +189,25 @@ class MockData {
       weight: 0.5,
       handling: 0.45,
       traction: 0.5,
+    ),
+        Kart(
+      id: 'Yoshi Bike',
+      name: 'Yoshi Bike',
+      speed: 0.7,
+      acceleration: 0.6,
+      weight: 0.6,
+      handling: 0.5,
+      traction: 0.6,
+      traction: 0.5,
+    ),
+        Kart(
+      id: 'MR.Soooby',
+      name: 'MR.Soooby',
+      speed: 0.85,
+      acceleration: 0.9,
+      weight: 0.7,
+      handling: 0.56,
+      traction: 0.8,
     ),
   ];
 
