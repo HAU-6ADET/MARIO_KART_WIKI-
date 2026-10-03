@@ -30,7 +30,8 @@ class KartDetailScreen extends StatelessWidget {
               isFavorited ? Icons.star_rounded : Icons.star_border_rounded,
               color: AppColors.secondary,
             ),
-            onPressed: () => appState.toggleFavorite(kart.id, FavoriteType.kart),
+            onPressed: () =>
+                appState.toggleFavorite(kart.id, FavoriteType.kart),
           ),
         ],
       ),

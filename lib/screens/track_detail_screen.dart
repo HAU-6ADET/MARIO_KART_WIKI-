@@ -31,7 +31,11 @@ class TrackDetailScreen extends StatelessWidget {
           SliverToBoxAdapter(
             child: Container(
               padding: const EdgeInsets.fromLTRB(
-                  AppSpacing.pad, AppSpacing.md, AppSpacing.pad, AppSpacing.xl),
+                AppSpacing.pad,
+                AppSpacing.md,
+                AppSpacing.pad,
+                AppSpacing.xl,
+              ),
               decoration: BoxDecoration(
                 gradient: LinearGradient(
                   begin: Alignment.topCenter,
@@ -47,17 +51,25 @@ class TrackDetailScreen extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         IconButton(
-                          icon: const Icon(Icons.chevron_left, color: Colors.white, size: 28),
+                          icon: const Icon(
+                            Icons.chevron_left,
+                            color: Colors.white,
+                            size: 28,
+                          ),
                           onPressed: () => Navigator.of(context).pop(),
                         ),
                         IconButton(
                           icon: Icon(
-                            isFavorited ? Icons.star_rounded : Icons.star_border_rounded,
+                            isFavorited
+                                ? Icons.star_rounded
+                                : Icons.star_border_rounded,
                             color: AppColors.secondary,
                             size: 26,
                           ),
-                          onPressed: () =>
-                              appState.toggleFavorite(track.id, FavoriteType.track),
+                          onPressed: () => appState.toggleFavorite(
+                            track.id,
+                            FavoriteType.track,
+                          ),
                         ),
                       ],
                     ),
@@ -82,35 +94,34 @@ class TrackDetailScreen extends StatelessWidget {
                       ),
                     ),
                     const SizedBox(height: AppSpacing.md),
-                    Text(track.name,
-                        style: Theme.of(context)
-                            .textTheme
-                            .displaySmall
-                            ?.copyWith(color: Colors.white)),
+                    Text(
+                      track.name,
+                      style: Theme.of(
+                        context,
+                      ).textTheme.displaySmall?.copyWith(color: Colors.white),
+                    ),
                     const SizedBox(height: 4),
                     Row(
                       mainAxisSize: MainAxisSize.min,
                       children: [
                         Text(
                           track.cup,
-                          style: Theme.of(context)
-                              .textTheme
-                              .bodyMedium
+                          style: Theme.of(context).textTheme.bodyMedium
                               ?.copyWith(color: Colors.white70),
                         ),
                         const SizedBox(width: AppSpacing.sm),
                         Container(
-                          padding:
-                              const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
+                          padding: const EdgeInsets.symmetric(
+                            horizontal: 10,
+                            vertical: 4,
+                          ),
                           decoration: BoxDecoration(
                             color: difficultyColor,
                             borderRadius: BorderRadius.circular(20),
                           ),
                           child: Text(
                             track.difficulty,
-                            style: Theme.of(context)
-                                .textTheme
-                                .labelSmall
+                            style: Theme.of(context).textTheme.labelSmall
                                 ?.copyWith(color: Colors.black87),
                           ),
                         ),
@@ -167,9 +178,15 @@ class _InfoSection extends StatelessWidget {
               child: Row(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const Text('•  ', style: TextStyle(color: AppColors.textSecondary)),
+                  const Text(
+                    '•  ',
+                    style: TextStyle(color: AppColors.textSecondary),
+                  ),
                   Expanded(
-                    child: Text(item, style: Theme.of(context).textTheme.bodyMedium),
+                    child: Text(
+                      item,
+                      style: Theme.of(context).textTheme.bodyMedium,
+                    ),
                   ),
                 ],
               ),

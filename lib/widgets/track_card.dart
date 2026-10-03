@@ -60,17 +60,17 @@ class TrackCard extends StatelessWidget {
                       ),
                       const SizedBox(height: AppSpacing.sm),
                       Container(
-                        padding:
-                            const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: 10,
+                          vertical: 4,
+                        ),
                         decoration: BoxDecoration(
                           color: difficultyColor,
                           borderRadius: BorderRadius.circular(20),
                         ),
                         child: Text(
                           track.difficulty,
-                          style: Theme.of(context)
-                              .textTheme
-                              .labelSmall
+                          style: Theme.of(context).textTheme.labelSmall
                               ?.copyWith(color: Colors.black87),
                         ),
                       ),

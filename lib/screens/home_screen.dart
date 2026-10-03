@@ -26,13 +26,19 @@ class HomeScreen extends StatelessWidget {
       case 0:
         break; // already home
       case 1:
-        Navigator.of(context).push(MaterialPageRoute(builder: (_) => const TrackGuideScreen()));
+        Navigator.of(
+          context,
+        ).push(MaterialPageRoute(builder: (_) => const TrackGuideScreen()));
         break;
       case 2:
-        Navigator.of(context).push(MaterialPageRoute(builder: (_) => const KartGuideScreen()));
+        Navigator.of(
+          context,
+        ).push(MaterialPageRoute(builder: (_) => const KartGuideScreen()));
         break;
       case 3:
-        Navigator.of(context).push(MaterialPageRoute(builder: (_) => const FavoritesScreen()));
+        Navigator.of(
+          context,
+        ).push(MaterialPageRoute(builder: (_) => const FavoritesScreen()));
         break;
     }
   }
@@ -48,7 +54,9 @@ class HomeScreen extends StatelessWidget {
         .toList();
     final showRecent = recentCharacters.isNotEmpty
         ? recentCharacters
-        : MockData.characters.take(4).toList(); // sensible default before anything's been viewed
+        : MockData.characters
+              .take(4)
+              .toList(); // sensible default before anything's been viewed
 
     final featured = MockData.tracks.firstWhere(
       (t) => t.id == 'rainbow_road',
@@ -56,7 +64,10 @@ class HomeScreen extends StatelessWidget {
     );
 
     return AppScaffold(
-      bottomNavigationBar: AppBottomNav(currentIndex: 0, onTap: (i) => _openTab(context, i)),
+      bottomNavigationBar: AppBottomNav(
+        currentIndex: 0,
+        onTap: (i) => _openTab(context, i),
+      ),
       body: SafeArea(
         child: SingleChildScrollView(
           padding: const EdgeInsets.all(AppSpacing.pad),
@@ -121,7 +132,8 @@ class HomeScreen extends StatelessWidget {
                 track: featured,
                 onTap: () => Navigator.of(context).push(
                   MaterialPageRoute(
-                    builder: (_) => RacingTrackDetailScreen(trackId: featured.id),
+                    builder: (_) =>
+                        RacingTrackDetailScreen(trackId: featured.id),
                   ),
                 ),
               ),
@@ -157,15 +169,20 @@ class HomeScreen extends StatelessWidget {
                 child: ListView.separated(
                   scrollDirection: Axis.horizontal,
                   itemCount: showRecent.length,
-                  separatorBuilder: (_, __) => const SizedBox(width: AppSpacing.md),
+                  separatorBuilder: (_, __) =>
+                      const SizedBox(width: AppSpacing.md),
                   itemBuilder: (context, index) {
                     final character = showRecent[index];
                     return GestureDetector(
                       onTap: () {
                         appState.markCharacterViewed(character.id);
-                        Navigator.of(context).push(MaterialPageRoute(
-                          builder: (_) => CharacterDetailScreen(characterId: character.id),
-                        ));
+                        Navigator.of(context).push(
+                          MaterialPageRoute(
+                            builder: (_) => CharacterDetailScreen(
+                              characterId: character.id,
+                            ),
+                          ),
+                        );
                       },
                       child: Column(
                         children: [
@@ -186,7 +203,10 @@ class HomeScreen extends StatelessWidget {
                             ),
                           ),
                           const SizedBox(height: 4),
-                          Text(character.name, style: Theme.of(context).textTheme.labelSmall),
+                          Text(
+                            character.name,
+                            style: Theme.of(context).textTheme.labelSmall,
+                          ),
                         ],
                       ),
                     );
@@ -227,8 +247,9 @@ class _CategoryGrid extends StatelessWidget {
           subtitle: '${MockData.characters.length} racers',
           icon: Icons.star_rounded,
           accent: AppColors.primary,
-          onTap: () => Navigator.of(context)
-              .push(MaterialPageRoute(builder: (_) => const CharacterGuideScreen())),
+          onTap: () => Navigator.of(context).push(
+            MaterialPageRoute(builder: (_) => const CharacterGuideScreen()),
+          ),
         ),
         CategoryCard(
           title: 'Tracks',

@@ -41,7 +41,9 @@ class AppBottomNav extends StatelessWidget {
             children: List.generate(_items.length, (index) {
               final item = _items[index];
               final selected = index == currentIndex;
-              final color = selected ? AppColors.primary : AppColors.textTertiary;
+              final color = selected
+                  ? AppColors.primary
+                  : AppColors.textTertiary;
               return Expanded(
                 child: InkWell(
                   onTap: () => onTap(index),
@@ -52,10 +54,9 @@ class AppBottomNav extends StatelessWidget {
                       const SizedBox(height: 2),
                       Text(
                         item.label,
-                        style: Theme.of(context)
-                            .textTheme
-                            .labelSmall
-                            ?.copyWith(color: color),
+                        style: Theme.of(
+                          context,
+                        ).textTheme.labelSmall?.copyWith(color: color),
                       ),
                     ],
                   ),

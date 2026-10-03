@@ -25,7 +25,9 @@ class FavoritesScreen extends StatelessWidget {
       );
       return;
     }
-    final target = index == 1 ? const TrackGuideScreen() : const KartGuideScreen();
+    final target = index == 1
+        ? const TrackGuideScreen()
+        : const KartGuideScreen();
     Navigator.of(context).push(MaterialPageRoute(builder: (_) => target));
   }
 
@@ -35,17 +37,25 @@ class FavoritesScreen extends StatelessWidget {
     final favorites = appState.favorites.toList();
 
     return AppScaffold(
-      bottomNavigationBar:
-          AppBottomNav(currentIndex: 3, onTap: (i) => _openTab(context, i)),
+      bottomNavigationBar: AppBottomNav(
+        currentIndex: 3,
+        onTap: (i) => _openTab(context, i),
+      ),
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.all(AppSpacing.pad),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text('Favorites', style: Theme.of(context).textTheme.headlineSmall),
+              Text(
+                'Favorites',
+                style: Theme.of(context).textTheme.headlineSmall,
+              ),
               const SizedBox(height: 4),
-              Text('${favorites.length} saved', style: Theme.of(context).textTheme.bodyMedium),
+              Text(
+                '${favorites.length} saved',
+                style: Theme.of(context).textTheme.bodyMedium,
+              ),
               const SizedBox(height: AppSpacing.md),
               Expanded(
                 child: favorites.isEmpty
@@ -91,8 +101,13 @@ class FavoritesScreen extends StatelessWidget {
         final match = MockData.characters.where((c) => c.id == entry.id);
         if (match.isEmpty) return null;
         final c = match.first;
-        return _FavoriteDisplay(c.name, 'Character', c.avatarColor, c.initials,
-            imageAsset: c.imageAsset);
+        return _FavoriteDisplay(
+          c.name,
+          'Character',
+          c.avatarColor,
+          c.initials,
+          imageAsset: c.imageAsset,
+        );
       case FavoriteType.track:
         final match = MockData.tracks.where((t) => t.id == entry.id);
         if (match.isEmpty) return null;
@@ -103,7 +118,11 @@ class FavoritesScreen extends StatelessWidget {
         if (match.isEmpty) return null;
         final k = match.first;
         return _FavoriteDisplay(
-            k.name, 'Kart', AppColors.dataBlue, k.name.substring(0, 2).toUpperCase());
+          k.name,
+          'Kart',
+          AppColors.dataBlue,
+          k.name.substring(0, 2).toUpperCase(),
+        );
     }
   }
 }
@@ -115,6 +134,11 @@ class _FavoriteDisplay {
   final String initials;
   final String? imageAsset;
 
-  _FavoriteDisplay(this.name, this.typeLabel, this.color, this.initials,
-      {this.imageAsset});
+  _FavoriteDisplay(
+    this.name,
+    this.typeLabel,
+    this.color,
+    this.initials, {
+    this.imageAsset,
+  });
 }

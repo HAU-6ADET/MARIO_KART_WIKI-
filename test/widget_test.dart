@@ -8,8 +8,9 @@ import 'package:mario_kart_world_wiki/main.dart';
 import 'package:mario_kart_world_wiki/widgets/category_card.dart';
 
 void main() {
-  testWidgets('Home screen shows the title and all four category cards',
-      (tester) async {
+  testWidgets('Home screen shows the title and all four category cards', (
+    tester,
+  ) async {
     // Build the app directly, not the DevicePreview wrapper, because a test
     // does not need the phone frame.
     await tester.pumpWidget(const MarioKartWorldWikiApp());
@@ -27,8 +28,9 @@ void main() {
     expect(find.widgetWithText(CategoryCard, 'Favorites'), findsOneWidget);
   });
 
-  testWidgets('Tapping the Characters card opens the Character Guide',
-      (tester) async {
+  testWidgets('Tapping the Characters card opens the Character Guide', (
+    tester,
+  ) async {
     await tester.pumpWidget(const MarioKartWorldWikiApp());
     await tester.pumpAndSettle();
 

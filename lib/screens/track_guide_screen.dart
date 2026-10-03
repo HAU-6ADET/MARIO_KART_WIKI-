@@ -23,7 +23,9 @@ class TrackGuideScreen extends StatelessWidget {
       );
       return;
     }
-    final target = index == 2 ? const KartGuideScreen() : const FavoritesScreen();
+    final target = index == 2
+        ? const KartGuideScreen()
+        : const FavoritesScreen();
     Navigator.of(context).push(MaterialPageRoute(builder: (_) => target));
   }
 
@@ -32,12 +34,12 @@ class TrackGuideScreen extends StatelessWidget {
     return AppScaffold(
       appBar: AppBar(
         title: const Text('Tracks'),
-        actions: [
-          IconButton(icon: const Icon(Icons.search), onPressed: () {}),
-        ],
+        actions: [IconButton(icon: const Icon(Icons.search), onPressed: () {})],
       ),
-      bottomNavigationBar:
-          AppBottomNav(currentIndex: 1, onTap: (i) => _openTab(context, i)),
+      bottomNavigationBar: AppBottomNav(
+        currentIndex: 1,
+        onTap: (i) => _openTab(context, i),
+      ),
       body: ListView.separated(
         padding: const EdgeInsets.all(AppSpacing.pad),
         itemCount: MockData.tracks.length,
@@ -47,7 +49,9 @@ class TrackGuideScreen extends StatelessWidget {
           return RacingTrackCard(
             track: track,
             onTap: () => Navigator.of(context).push(
-              MaterialPageRoute(builder: (_) => RacingTrackDetailScreen(trackId: track.id)),
+              MaterialPageRoute(
+                builder: (_) => RacingTrackDetailScreen(trackId: track.id),
+              ),
             ),
           );
         },

@@ -73,7 +73,10 @@ class RacingTrackDetailScreen extends StatelessWidget {
                                 style: textTheme.titleMedium,
                               ),
                               const SizedBox(height: AppSpacing.xs),
-                              Text(extras.overview, style: textTheme.bodyMedium),
+                              Text(
+                                extras.overview,
+                                style: textTheme.bodyMedium,
+                              ),
                             ],
                           ),
                         ),
@@ -160,7 +163,9 @@ class _Hero extends StatelessWidget {
               SafeArea(
                 bottom: false,
                 child: Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: AppSpacing.sm),
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: AppSpacing.sm,
+                  ),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
@@ -227,53 +232,53 @@ class _RaceFacts extends StatelessWidget {
       // Row + stretch needs a bounded height; inside a scroll view it has
       // none, so size the row to its tallest tile instead.
       child: Row(
-      crossAxisAlignment: CrossAxisAlignment.stretch,
-      children: [
-        Expanded(
-          child: _FactTile(
-            label: 'DIFFICULTY',
-            value: track.difficulty,
-            valueColor: difficultyColor,
-            leading: DifficultyFlags(difficulty: track.difficulty, size: 14),
-          ),
-        ),
-        const SizedBox(width: AppSpacing.sm),
-        Expanded(
-          child: _FactTile(
-            label: 'LAPS',
-            value: '${extras.laps}',
-            leading: const Icon(
-              Icons.loop_rounded,
-              size: 16,
-              color: AppColors.dataBlue,
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          Expanded(
+            child: _FactTile(
+              label: 'DIFFICULTY',
+              value: track.difficulty,
+              valueColor: difficultyColor,
+              leading: DifficultyFlags(difficulty: track.difficulty, size: 14),
             ),
           ),
-        ),
-        const SizedBox(width: AppSpacing.sm),
-        Expanded(
-          child: _FactTile(
-            label: 'SETTING',
-            value: extras.setting,
-            leading: const Icon(
-              Icons.terrain_rounded,
-              size: 16,
-              color: AppColors.dataBlue,
+          const SizedBox(width: AppSpacing.sm),
+          Expanded(
+            child: _FactTile(
+              label: 'LAPS',
+              value: '${extras.laps}',
+              leading: const Icon(
+                Icons.loop_rounded,
+                size: 16,
+                color: AppColors.dataBlue,
+              ),
             ),
           ),
-        ),
-        const SizedBox(width: AppSpacing.sm),
-        Expanded(
-          child: _FactTile(
-            label: 'DEBUT',
-            value: extras.origin,
-            leading: const Icon(
-              Icons.history_rounded,
-              size: 16,
-              color: AppColors.dataBlue,
+          const SizedBox(width: AppSpacing.sm),
+          Expanded(
+            child: _FactTile(
+              label: 'SETTING',
+              value: extras.setting,
+              leading: const Icon(
+                Icons.terrain_rounded,
+                size: 16,
+                color: AppColors.dataBlue,
+              ),
             ),
           ),
-        ),
-      ],
+          const SizedBox(width: AppSpacing.sm),
+          Expanded(
+            child: _FactTile(
+              label: 'DEBUT',
+              value: extras.origin,
+              leading: const Icon(
+                Icons.history_rounded,
+                size: 16,
+                color: AppColors.dataBlue,
+              ),
+            ),
+          ),
+        ],
       ),
     );
   }

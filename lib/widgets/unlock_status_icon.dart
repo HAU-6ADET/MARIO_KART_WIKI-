@@ -29,7 +29,11 @@ class UnlockStatusIcon extends StatelessWidget {
         shape: BoxShape.circle,
         color: AppColors.surfaceHigh,
       ),
-      child: const Icon(Icons.lock_outline, size: 16, color: AppColors.textTertiary),
+      child: const Icon(
+        Icons.lock_outline,
+        size: 16,
+        color: AppColors.textTertiary,
+      ),
     );
   }
 }

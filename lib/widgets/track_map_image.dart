@@ -65,7 +65,11 @@ class TrackMapImage extends StatelessWidget {
       height: height,
       color: fallbackColor,
       alignment: Alignment.center,
-      child: Icon(Icons.flag_rounded, color: Colors.black87, size: flagIconSize),
+      child: Icon(
+        Icons.flag_rounded,
+        color: Colors.black87,
+        size: flagIconSize,
+      ),
     );
   }
 }

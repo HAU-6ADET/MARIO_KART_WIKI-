@@ -13,7 +13,11 @@ class FeaturedRaceBanner extends StatelessWidget {
   final Track track;
   final VoidCallback onTap;
 
-  const FeaturedRaceBanner({super.key, required this.track, required this.onTap});
+  const FeaturedRaceBanner({
+    super.key,
+    required this.track,
+    required this.onTap,
+  });
 
   @override
   Widget build(BuildContext context) {

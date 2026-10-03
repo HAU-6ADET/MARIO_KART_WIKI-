@@ -220,7 +220,7 @@ class MockData {
       handling: 0.45,
       traction: 0.5,
     ),
-        Kart(
+    Kart(
       id: 'Yoshi Bike',
       name: 'Yoshi Bike',
       speed: 0.7,
@@ -229,7 +229,7 @@ class MockData {
       handling: 0.5,
       traction: 0.6,
     ),
-        Kart(
+    Kart(
       id: 'MR.Soooby',
       name: 'MR.Soooby',
       speed: 0.85,

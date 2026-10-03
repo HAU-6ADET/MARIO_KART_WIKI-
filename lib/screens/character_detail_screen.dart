@@ -37,10 +37,15 @@ class CharacterDetailScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final character = MockData.characters.firstWhere((c) => c.id == characterId);
+    final character = MockData.characters.firstWhere(
+      (c) => c.id == characterId,
+    );
     final extras = CharacterExtras.of(character.id);
     final appState = AppStateScope.of(context);
-    final isFavorited = appState.isFavorited(character.id, FavoriteType.character);
+    final isFavorited = appState.isFavorited(
+      character.id,
+      FavoriteType.character,
+    );
     final textTheme = Theme.of(context).textTheme;
     final color = character.avatarColor;
 
@@ -419,7 +424,9 @@ class _Hero extends StatelessWidget {
               SafeArea(
                 bottom: false,
                 child: Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: AppSpacing.sm),
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: AppSpacing.sm,
+                  ),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [

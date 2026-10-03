@@ -37,7 +37,8 @@ class CharacterAvatar extends StatelessWidget {
           // If the asset is missing, or hasn't been declared in pubspec.yaml
           // yet, fall back to the initials circle instead of crashing or
           // showing Flutter's broken-image placeholder.
-          errorBuilder: (context, error, stackTrace) => _initialsCircle(context),
+          errorBuilder: (context, error, stackTrace) =>
+              _initialsCircle(context),
         ),
       );
     }

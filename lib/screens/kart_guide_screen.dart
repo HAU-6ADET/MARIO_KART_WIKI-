@@ -26,7 +26,9 @@ class KartGuideScreen extends StatelessWidget {
       );
       return;
     }
-    final target = index == 1 ? const TrackGuideScreen() : const FavoritesScreen();
+    final target = index == 1
+        ? const TrackGuideScreen()
+        : const FavoritesScreen();
     Navigator.of(context).push(MaterialPageRoute(builder: (_) => target));
   }
 
@@ -34,8 +36,10 @@ class KartGuideScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return AppScaffold(
       appBar: AppBar(title: const Text('Karts & Bikes')),
-      bottomNavigationBar:
-          AppBottomNav(currentIndex: 2, onTap: (i) => _openTab(context, i)),
+      bottomNavigationBar: AppBottomNav(
+        currentIndex: 2,
+        onTap: (i) => _openTab(context, i),
+      ),
       body: ListView.separated(
         padding: const EdgeInsets.all(AppSpacing.pad),
         itemCount: MockData.karts.length,
@@ -48,7 +52,9 @@ class KartGuideScreen extends StatelessWidget {
             avatarColor: AppColors.dataBlue,
             initials: kart.name.substring(0, 2).toUpperCase(),
             onTap: () => Navigator.of(context).push(
-              MaterialPageRoute(builder: (_) => KartDetailScreen(kartId: kart.id)),
+              MaterialPageRoute(
+                builder: (_) => KartDetailScreen(kartId: kart.id),
+              ),
             ),
           );
         },

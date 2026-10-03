@@ -53,7 +53,9 @@ class _CharacterGuideScreenState extends State<CharacterGuideScreen> {
   Widget build(BuildContext context) {
     final visible = _filter == null
         ? MockData.characters
-        : MockData.characters.where((c) => c.characterClass == _filter).toList();
+        : MockData.characters
+              .where((c) => c.characterClass == _filter)
+              .toList();
     final textTheme = Theme.of(context).textTheme;
 
     return AppScaffold(

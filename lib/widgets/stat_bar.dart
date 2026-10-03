@@ -29,10 +29,7 @@ class StatBar extends StatelessWidget {
       padding: const EdgeInsets.symmetric(vertical: AppSpacing.xs),
       child: Row(
         children: [
-          SizedBox(
-            width: 92,
-            child: Text(label, style: textTheme.bodyMedium),
-          ),
+          SizedBox(width: 92, child: Text(label, style: textTheme.bodyMedium)),
           const SizedBox(width: AppSpacing.sm),
           Expanded(
             child: ClipRRect(
@@ -56,9 +53,7 @@ class StatBar extends StatelessWidget {
             child: Text(
               '${(clamped * 100).round()}',
               textAlign: TextAlign.right,
-              style: textTheme.labelSmall?.copyWith(
-                color: AppColors.onSurface,
-              ),
+              style: textTheme.labelSmall?.copyWith(color: AppColors.onSurface),
             ),
           ),
           if (note != null) ...[

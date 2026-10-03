@@ -9,21 +9,41 @@ import 'package:google_fonts/google_fonts.dart';
 class AppColors {
   AppColors._();
 
-  static const Color primary = Color(0xFFFF3B30); // buttons, active nav tab, key CTAs
-  static const Color onPrimary = Color(0xFFFFFFFF); // text/icons drawn on primary
-  static const Color secondary = Color(0xFFFFD60A); // favorite star, highlights, unlock badges
+  static const Color primary = Color(
+    0xFFFF3B30,
+  ); // buttons, active nav tab, key CTAs
+  static const Color onPrimary = Color(
+    0xFFFFFFFF,
+  ); // text/icons drawn on primary
+  static const Color secondary = Color(
+    0xFFFFD60A,
+  ); // favorite star, highlights, unlock badges
 
   static const Color surface = Color(0xFF1B2030); // cards, sheets, bottom nav
-  static const Color onSurface = Color(0xFFF5F7FA); // body text on surface/background
-  static const Color error = Color(0xFFFF6B6B); // validation, destructive actions
+  static const Color onSurface = Color(
+    0xFFF5F7FA,
+  ); // body text on surface/background
+  static const Color error = Color(
+    0xFFFF6B6B,
+  ); // validation, destructive actions
 
-  static const Color background = Color(0xFF10131A); // app background (dark theme)
-  static const Color surfaceHigh = Color(0xFF262D42); // elevated / pressed state
+  static const Color background = Color(
+    0xFF10131A,
+  ); // app background (dark theme)
+  static const Color surfaceHigh = Color(
+    0xFF262D42,
+  ); // elevated / pressed state
   static const Color divider = Color(0xFF2A3044); // card borders, list dividers
 
-  static const Color dataBlue = Color(0xFF4391FF); // track category tags, secondary badges
-  static const Color success = Color(0xFF34C759); // unlocked check, Easy difficulty
-  static const Color textSecondary = Color(0xFFA8B0C4); // subtitles, helper text
+  static const Color dataBlue = Color(
+    0xFF4391FF,
+  ); // track category tags, secondary badges
+  static const Color success = Color(
+    0xFF34C759,
+  ); // unlocked check, Easy difficulty
+  static const Color textSecondary = Color(
+    0xFFA8B0C4,
+  ); // subtitles, helper text
   static const Color textTertiary = Color(0xFF6E768A); // placeholders, disabled
 }
 
@@ -47,7 +67,8 @@ class AppSpacing {
   static const double xs = 4;
   static const double sm = 8;
   static const double md = 16;
-  static const double pad = 20; // screen edge padding — the one-off outside xs/sm/md/lg/xl
+  static const double pad =
+      20; // screen edge padding — the one-off outside xs/sm/md/lg/xl
   static const double lg = 24;
   static const double xl = 32;
 
@@ -148,8 +169,10 @@ ThemeData buildAppTheme() {
         borderRadius: BorderRadius.circular(14),
         borderSide: BorderSide.none,
       ),
-      contentPadding:
-          const EdgeInsets.symmetric(horizontal: AppSpacing.md, vertical: AppSpacing.md),
+      contentPadding: const EdgeInsets.symmetric(
+        horizontal: AppSpacing.md,
+        vertical: AppSpacing.md,
+      ),
     ),
     iconTheme: const IconThemeData(color: AppColors.onSurface),
     splashColor: AppColors.primary.withOpacity(0.15),
