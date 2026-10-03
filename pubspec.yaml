@@ -32,3 +32,7 @@ flutter:
     - assets/background/
     - assets/characters/
     - assets/tracks/
+  # Check formatting
+  scripts:
+    check-formatting:
+      run: dart format --output=none --set-exit-if-changed .
