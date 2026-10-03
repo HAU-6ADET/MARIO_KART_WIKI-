@@ -18,9 +18,13 @@ reader should be able to see your app's look in one glance, without reading a
 table.
 
 ## Palette
+![Design system](assets/ds-01-palette.png)
 ## Type scale
+![Design system](assets/ds-02-type-spacing.png)
 ## Spacing
+![Design system](assets/ds-02-type-spacing.png)
 ## Components
+![Design system](assets/ds-03-components.png)
 
 One row per reusable widget: what it is, which file it lives in, what parameters
 it takes, which screens use it.
