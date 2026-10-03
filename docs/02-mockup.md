@@ -10,10 +10,6 @@ The mockup contains the main screens of the Mario Kart Wiki, including the home 
 
 ![Home Screen](assets/home-screen.png)
 
-### Games Screen
-
-![Games Screen](assets/games-screen.png)
-
 ### Characters Screen
 
 ![Characters Screen](assets/characters-screen.png)
@@ -26,11 +22,7 @@ The mockup contains the main screens of the Mario Kart Wiki, including the home 
 
 ![Vehicles Screen](assets/vehicles-screen.png)
 
-### Items Screen
-
-![Items Screen](assets/items-screen.png)
-
-### Detail Screen
+### favorite Screen
 
 ![Detail Screen](assets/detail-screen.png)
 
@@ -55,6 +47,6 @@ The wireframes show the basic layout and navigation of the Mario Kart Wiki befor
          |
    +-----+-----+
    |           |
-VEHICLES      ITEMS
+VEHICLES      Tracks
    |           |
 DETAILS      DETAILS
