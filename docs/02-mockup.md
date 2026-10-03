@@ -1,23 +1,60 @@
-# Mockup and wireframes
+# Mockup and Wireframes
 
-The visual plan for this app. Your wireframes answered what goes where; the
-mockup shows what it looks like.
+The visual plan for the **Mario Kart Wiki**. The wireframes show the structure and navigation of the application, while the mockup shows the final visual design.
 
 ## Mockup
 
-Put your mockup images or PDF in `assets/` and embed them here, one heading per
-screen.
+The mockup contains the main screens of the Mario Kart Wiki, including the home page, game list, character list, track list, vehicle list, item list, and detailed information pages.
 
-_(Embed your mockup here once it is in `assets/`.)_
+### Home Screen
+
+![Home Screen](assets/home-screen.png)
+
+### Games Screen
+
+![Games Screen](assets/games-screen.png)
+
+### Characters Screen
+
+![Characters Screen](assets/characters-screen.png)
+
+### Tracks Screen
+
+![Tracks Screen](assets/tracks-screen.png)
+
+### Vehicles Screen
+
+![Vehicles Screen](assets/vehicles-screen.png)
+
+### Items Screen
+
+![Items Screen](assets/items-screen.png)
+
+### Detail Screen
+
+![Detail Screen](assets/detail-screen.png)
 
 ## Wireframes
 
-Your earlier box-and-label sketches and the screen flow: which screen opens
-first, and how a user moves between them. Photos of paper are fine.
+The wireframes show the basic layout and navigation of the Mario Kart Wiki before the final visual design was created.
 
-_(Embed your flow diagram and sketches here once they are in `assets/`.)_
+### Screen Flow
 
-## Screens
+```text
+                    HOME
+                      |
+        +-------------+-------------+
+        |             |             |
+      GAMES       CHARACTERS      TRACKS
+        |             |             |
+     DETAILS       DETAILS       DETAILS
+        |
+    GAME INFO
 
-One short section per screen: what is on it, what the user does, and where each
-action goes.
+        HOME
+         |
+   +-----+-----+
+   |           |
+VEHICLES      ITEMS
+   |           |
+DETAILS      DETAILS
