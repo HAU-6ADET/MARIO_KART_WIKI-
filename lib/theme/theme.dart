@@ -27,6 +27,17 @@ class AppColors {
   static const Color textTertiary = Color(0xFF6E768A); // placeholders, disabled
 }
 
+/// The app-wide wallpaper (the line-art item pattern supplied as MAIN.jpg).
+class AppBackdrop {
+  AppBackdrop._();
+
+  static const String asset = 'assets/background/main.jpg';
+
+  /// How strongly the pattern shows over [AppColors.background]. Low enough
+  /// that text on cards stays crisp, high enough that the pattern reads.
+  static const double imageOpacity = 0.6;
+}
+
 /// Spacing tokens from design-system.pdf §2 "Spacing".
 /// Base unit 4 · screen edge padding 20 · gap between list items 12 ·
 /// gap between sections 24.
@@ -118,7 +129,8 @@ ThemeData buildAppTheme() {
     textTheme: textTheme,
     dividerColor: AppColors.divider,
     appBarTheme: AppBarTheme(
-      backgroundColor: AppColors.background,
+      // Transparent so the wallpaper shows behind the bar.
+      backgroundColor: Colors.transparent,
       surfaceTintColor: Colors.transparent,
       elevation: 0,
       iconTheme: const IconThemeData(color: AppColors.onSurface),

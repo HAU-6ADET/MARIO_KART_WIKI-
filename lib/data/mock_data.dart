@@ -124,50 +124,80 @@ class MockData {
 
   static const List<Track> tracks = [
     Track(
+      id: 'moo_moo_meadows',
+      name: 'Moo Moo Meadows',
+      imageAsset: 'assets/tracks/moo_moo_meadow.png',
+      cup: 'Shell Cup',
+      difficulty: 'Easy',
+      tileColor: AppColors.success,
+      shortcuts: [
+        'Boost with a Mushroom across the grass on the sharper bends to skip the corner',
+      ],
+      hazards: [
+        'Cows wandering across the track',
+        'Moles that pop out of the ground in your path',
+      ],
+      strategyTips: [
+        'Long, easy curves make this the best course to practise drift mini-turbos',
+        'Stay on the road between the cows rather than swerving into the grass',
+      ],
+    ),
+    Track(
+      id: 'dry_dry_dessert',
+      name: 'Dry Dry Desert',
+      imageAsset: 'assets/tracks/dry_dry_dessert.png',
+      cup: 'Banana Cup',
+      difficulty: 'Medium',
+      tileColor: AppColors.secondary,
+      shortcuts: ['Use a Mushroom to cut through the sand on wide corners'],
+      hazards: [
+        'Loose sand off the road slows your kart',
+        'Quicksand pits that swallow karts',
+        'Stone pillars and ruins that narrow the road',
+      ],
+      strategyTips: [
+        'Keep to the packed road and only leave it with a boost in hand',
+        'Save a Mushroom for the final straight of the last lap',
+      ],
+    ),
+    Track(
+      id: 'royal_raceway',
+      name: 'Royal Raceway',
+      imageAsset: 'assets/tracks/royal_raceway.png',
+      cup: 'Banana Cup',
+      difficulty: 'Medium',
+      tileColor: AppColors.primary,
+      shortcuts: [
+        'Look for ramps and gaps along the track to skip sections with a boost',
+      ],
+      hazards: [
+        'A wide road lets rivals box you in on the opening straight',
+        'Sharp bends where speed built up on the straights is easy to lose',
+      ],
+      strategyTips: [
+        'Brake and drift early into the tight bends, then boost out of them',
+        'Hold the inside line to keep rivals from passing on the exit',
+      ],
+    ),
+    Track(
       id: 'rainbow_road',
       name: 'Rainbow Road',
       imageAsset: 'assets/tracks/rainbow_road.png',
       cup: 'Special Cup',
       difficulty: 'Hard',
       tileColor: AppColors.dataBlue,
-      shortcuts: ['Cut across the star-field gap after the first bend'],
-      hazards: ['No guardrails on most turns', 'Anti-gravity sections'],
-      strategyTips: ['Hug the inside line through anti-gravity turns'],
+      shortcuts: [
+        'On the descent, look for the Special Cup sign and fly across with a Mushroom to skip a long stretch (risky: a miss means falling off)',
+      ],
+      hazards: [
+        'Open edges and long drops',
+        'Anti-gravity sections that change how the kart handles',
+      ],
+      strategyTips: [
+        'Bump into rivals while in anti-gravity to earn a spin boost',
+        'Hug the inside line through the curves and avoid the edge',
+      ],
     ),
-    Track(
-      id: 'moo_moo_meadows',
-      imageAsset: 'assets/tracks/moo_moo_meadow.png',
-      name: 'Moo Moo Meadows',
-      cup: 'Flower Cup',
-      difficulty: 'Easy',
-      tileColor: AppColors.success,
-      shortcuts: ['Boost panel through the barn shortcut'],
-      hazards: ['Wandering Moo Moos on the track'],
-      strategyTips: ['Great track to practice drift-boosting'],
-    ),
-    Track(
-      id: 'dry_dry_dessert',
-      imageAsset: 'assets/tracks/dry_dry_dessert.png',
-      name: 'Dry Dry Desert',
-      cup: 'Shell Cup',
-      difficulty: 'Medium',
-      tileColor: AppColors.secondary,
-      shortcuts: ['Jump the bone-pile gap near the midpoint'],
-      hazards: ['Dry Bones piles that collapse and respawn'],
-      strategyTips: ['Save your mushroom for the final straight'],
-    ),
-    Track(
-      id: 'crown_city',
-      imageAsset: 'assets/tracks/crown_city.png',
-      name: 'Crown City',
-      cup: 'Star Cup',
-      difficulty: 'Medium',
-      tileColor: AppColors.primary,
-      shortcuts: ['Alley cut-through after the plaza turn'],
-      hazards: ['Narrow city streets, tight corners'],
-      strategyTips: ['Brake earlier than you think into the plaza'],
-    ),
-    
   ];
 
   // Extrapolated — see lib/models/kart.dart.

@@ -1,13 +1,15 @@
 import 'package:flutter/material.dart';
 
+import '../widgets/app_scaffold.dart';
+
 import '../data/mock_data.dart';
 import '../theme/theme.dart';
 import '../widgets/app_bottom_nav.dart';
-import '../widgets/track_card.dart';
+import '../widgets/racing_track_card.dart';
 import 'favorites_screen.dart';
 import 'home_screen.dart';
 import 'kart_guide_screen.dart';
-import 'track_detail_screen.dart';
+import 'racing_track_detail_screen.dart';
 
 class TrackGuideScreen extends StatelessWidget {
   const TrackGuideScreen({super.key});
@@ -27,7 +29,7 @@ class TrackGuideScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return AppScaffold(
       appBar: AppBar(
         title: const Text('Tracks'),
         actions: [
@@ -42,10 +44,10 @@ class TrackGuideScreen extends StatelessWidget {
         separatorBuilder: (_, __) => const SizedBox(height: AppSpacing.listGap),
         itemBuilder: (context, index) {
           final track = MockData.tracks[index];
-          return TrackCard(
+          return RacingTrackCard(
             track: track,
             onTap: () => Navigator.of(context).push(
-              MaterialPageRoute(builder: (_) => TrackDetailScreen(trackId: track.id)),
+              MaterialPageRoute(builder: (_) => RacingTrackDetailScreen(trackId: track.id)),
             ),
           );
         },

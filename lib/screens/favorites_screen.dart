@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../widgets/app_scaffold.dart';
+
 import '../data/app_state.dart';
 import '../data/mock_data.dart';
 import '../theme/theme.dart';
@@ -32,7 +34,7 @@ class FavoritesScreen extends StatelessWidget {
     final appState = AppStateScope.of(context);
     final favorites = appState.favorites.toList();
 
-    return Scaffold(
+    return AppScaffold(
       bottomNavigationBar:
           AppBottomNav(currentIndex: 3, onTap: (i) => _openTab(context, i)),
       body: SafeArea(

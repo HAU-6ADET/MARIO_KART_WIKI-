@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../widgets/app_scaffold.dart';
+
 import '../data/app_state.dart';
 import '../data/mock_data.dart';
 import '../theme/theme.dart';
@@ -23,8 +25,7 @@ class TrackDetailScreen extends StatelessWidget {
     final isFavorited = appState.isFavorited(track.id, FavoriteType.track);
     final difficultyColor = AppDifficultyColors.forDifficulty(track.difficulty);
 
-    return Scaffold(
-      backgroundColor: AppColors.background,
+    return AppScaffold(
       body: CustomScrollView(
         slivers: [
           SliverToBoxAdapter(

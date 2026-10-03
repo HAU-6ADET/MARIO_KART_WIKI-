@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../widgets/app_scaffold.dart';
+
 import '../data/app_state.dart';
 import '../data/mock_data.dart';
 import '../theme/theme.dart';
@@ -19,7 +21,7 @@ class KartDetailScreen extends StatelessWidget {
     final appState = AppStateScope.of(context);
     final isFavorited = appState.isFavorited(kart.id, FavoriteType.kart);
 
-    return Scaffold(
+    return AppScaffold(
       appBar: AppBar(
         title: Text(kart.name),
         actions: [

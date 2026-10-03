@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
 
+import '../widgets/app_scaffold.dart';
+
 import '../data/app_state.dart';
 import '../data/mock_data.dart';
 import '../models/character.dart';
 import '../theme/theme.dart';
 import '../widgets/app_bottom_nav.dart';
-import '../widgets/entity_list_tile.dart';
-import '../widgets/unlock_status_icon.dart';
+import '../widgets/checkered_strip.dart';
+import '../widgets/racer_card.dart';
 import 'character_detail_screen.dart';
 import 'favorites_screen.dart';
 import 'home_screen.dart';
@@ -28,6 +30,7 @@ class _CharacterGuideScreenState extends State<CharacterGuideScreen> {
     CharacterClass.speed,
     CharacterClass.balanced,
     CharacterClass.heavy,
+    CharacterClass.lightweight,
   ];
 
   void _openTab(int index) {
@@ -51,10 +54,14 @@ class _CharacterGuideScreenState extends State<CharacterGuideScreen> {
     final visible = _filter == null
         ? MockData.characters
         : MockData.characters.where((c) => c.characterClass == _filter).toList();
+    final textTheme = Theme.of(context).textTheme;
 
-    return Scaffold(
+    return AppScaffold(
       appBar: AppBar(
-        title: const Text('Characters'),
+        title: Text(
+          'Characters',
+          style: textTheme.headlineSmall?.copyWith(fontStyle: FontStyle.italic),
+        ),
         actions: [
           IconButton(
             icon: const Icon(Icons.search),
@@ -67,8 +74,10 @@ class _CharacterGuideScreenState extends State<CharacterGuideScreen> {
       bottomNavigationBar: AppBottomNav(currentIndex: 0, onTap: _openTab),
       body: Column(
         children: [
+          const CheckeredStrip(height: 8),
+          const SizedBox(height: AppSpacing.md),
           SizedBox(
-            height: 48,
+            height: 40,
             child: ListView.separated(
               scrollDirection: Axis.horizontal,
               padding: const EdgeInsets.symmetric(horizontal: AppSpacing.pad),
@@ -84,42 +93,72 @@ class _CharacterGuideScreenState extends State<CharacterGuideScreen> {
                   onSelected: (_) => setState(() => _filter = classFilter),
                   selectedColor: AppColors.primary,
                   backgroundColor: AppColors.surfaceHigh,
+                  showCheckmark: false,
                   labelStyle: TextStyle(
                     color: selected ? Colors.white : AppColors.textSecondary,
                     fontWeight: FontWeight.bold,
                   ),
-                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(20),
+                  ),
                   side: BorderSide.none,
                 );
               },
             ),
           ),
-          const SizedBox(height: AppSpacing.md),
-          Expanded(
-            child: ListView.separated(
-              padding: const EdgeInsets.symmetric(horizontal: AppSpacing.pad),
-              itemCount: visible.length,
-              separatorBuilder: (_, __) => const SizedBox(height: AppSpacing.listGap),
-              itemBuilder: (context, index) {
-                final character = visible[index];
-                return EntityListTile(
-                  name: character.name,
-                  subtitle: character.characterClass.label,
-                  avatarColor: character.avatarColor,
-                  initials: character.initials,
-                  imageAsset: character.imageAsset,
-                  trailing: UnlockStatusIcon(unlocked: character.unlocked),
-                  onTap: () {
-                    AppStateScope.of(context).markCharacterViewed(character.id);
-                    Navigator.of(context).push(MaterialPageRoute(
-                      builder: (_) => CharacterDetailScreen(characterId: character.id),
-                    ));
-                  },
-                );
-              },
+          Padding(
+            padding: const EdgeInsets.fromLTRB(
+              AppSpacing.pad,
+              AppSpacing.sm,
+              AppSpacing.pad,
+              AppSpacing.sm,
+            ),
+            child: Align(
+              alignment: Alignment.centerLeft,
+              child: Text(
+                '${visible.length} on the grid · tap a card for the full driver profile',
+                style: textTheme.bodyMedium?.copyWith(fontSize: 12),
+              ),
             ),
           ),
-          const SizedBox(height: AppSpacing.md),
+          Expanded(
+            child: visible.isEmpty
+                ? Center(
+                    child: Text(
+                      'No racers in this class yet.',
+                      style: textTheme.bodyMedium,
+                    ),
+                  )
+                : ListView.separated(
+                    padding: const EdgeInsets.fromLTRB(
+                      AppSpacing.pad,
+                      AppSpacing.xs,
+                      AppSpacing.pad,
+                      AppSpacing.pad,
+                    ),
+                    itemCount: visible.length,
+                    separatorBuilder: (_, __) =>
+                        const SizedBox(height: AppSpacing.listGap),
+                    itemBuilder: (context, index) {
+                      final character = visible[index];
+                      return RacerCard(
+                        character: character,
+                        onTap: () {
+                          AppStateScope.of(
+                            context,
+                          ).markCharacterViewed(character.id);
+                          Navigator.of(context).push(
+                            MaterialPageRoute(
+                              builder: (_) => CharacterDetailScreen(
+                                characterId: character.id,
+                              ),
+                            ),
+                          );
+                        },
+                      );
+                    },
+                  ),
+          ),
         ],
       ),
     );

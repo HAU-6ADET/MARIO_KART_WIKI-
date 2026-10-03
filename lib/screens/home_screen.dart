@@ -1,15 +1,21 @@
 import 'package:flutter/material.dart';
 
+import '../widgets/app_scaffold.dart';
+
 import '../data/app_state.dart';
 import '../data/mock_data.dart';
 import '../theme/theme.dart';
 import '../widgets/app_bottom_nav.dart';
 import '../widgets/category_card.dart';
 import '../widgets/character_avatar.dart';
+import '../widgets/checkered_strip.dart';
+import '../widgets/featured_race_banner.dart';
+import '../widgets/home_stats_strip.dart';
 import 'character_detail_screen.dart';
 import 'character_guide_screen.dart';
 import 'favorites_screen.dart';
 import 'kart_guide_screen.dart';
+import 'racing_track_detail_screen.dart';
 import 'track_guide_screen.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -44,7 +50,12 @@ class HomeScreen extends StatelessWidget {
         ? recentCharacters
         : MockData.characters.take(4).toList(); // sensible default before anything's been viewed
 
-    return Scaffold(
+    final featured = MockData.tracks.firstWhere(
+      (t) => t.id == 'rainbow_road',
+      orElse: () => MockData.tracks.first,
+    );
+
+    return AppScaffold(
       bottomNavigationBar: AppBottomNav(currentIndex: 0, onTap: (i) => _openTab(context, i)),
       body: SafeArea(
         child: SingleChildScrollView(
@@ -52,11 +63,48 @@ class HomeScreen extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text('Mario Kart World Wiki', style: Theme.of(context).textTheme.headlineSmall),
-              const SizedBox(height: 4),
-              Text(
-                'Every character, track & kart in one place',
-                style: Theme.of(context).textTheme.bodyMedium,
+              Row(
+                children: [
+                  Container(
+                    width: 46,
+                    height: 46,
+                    decoration: BoxDecoration(
+                      color: AppColors.primary,
+                      borderRadius: BorderRadius.circular(14),
+                    ),
+                    child: const Icon(
+                      Icons.sports_score_rounded,
+                      color: Colors.white,
+                      size: 26,
+                    ),
+                  ),
+                  const SizedBox(width: AppSpacing.md - 4),
+                  Expanded(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          'Mario Kart World Wiki',
+                          style: Theme.of(context).textTheme.headlineSmall
+                              ?.copyWith(fontStyle: FontStyle.italic),
+                          maxLines: 1,
+                          overflow: TextOverflow.ellipsis,
+                        ),
+                        Text(
+                          'Every character, track & kart in one place',
+                          style: Theme.of(context).textTheme.bodyMedium,
+                          maxLines: 1,
+                          overflow: TextOverflow.ellipsis,
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+              const SizedBox(height: AppSpacing.md),
+              ClipRRect(
+                borderRadius: BorderRadius.circular(3),
+                child: const CheckeredStrip(height: 8),
               ),
               const SizedBox(height: AppSpacing.md),
               TextField(
@@ -69,12 +117,43 @@ class HomeScreen extends StatelessWidget {
                 },
               ),
               const SizedBox(height: AppSpacing.sectionGap),
+              FeaturedRaceBanner(
+                track: featured,
+                onTap: () => Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (_) => RacingTrackDetailScreen(trackId: featured.id),
+                  ),
+                ),
+              ),
+              const SizedBox(height: AppSpacing.md),
+              HomeStatsStrip(
+                stats: [
+                  (
+                    value: MockData.characters.length,
+                    label: 'RACERS',
+                    icon: Icons.emoji_events_rounded,
+                  ),
+                  (
+                    value: MockData.tracks.length,
+                    label: 'COURSES',
+                    icon: Icons.flag_rounded,
+                  ),
+                  (
+                    value: MockData.karts.length,
+                    label: 'KARTS',
+                    icon: Icons.speed_rounded,
+                  ),
+                ],
+              ),
+              const SizedBox(height: AppSpacing.sectionGap),
+              const _SectionTitle('Choose your lane'),
+              const SizedBox(height: AppSpacing.md),
               _CategoryGrid(onOpenTab: (i) => _openTab(context, i)),
               const SizedBox(height: AppSpacing.sectionGap),
-              Text('Recently viewed', style: Theme.of(context).textTheme.titleMedium),
+              const _SectionTitle('Recently viewed'),
               const SizedBox(height: AppSpacing.md),
               SizedBox(
-                height: 84,
+                height: 88,
                 child: ListView.separated(
                   scrollDirection: Axis.horizontal,
                   itemCount: showRecent.length,
@@ -90,11 +169,21 @@ class HomeScreen extends StatelessWidget {
                       },
                       child: Column(
                         children: [
-                          CharacterAvatar(
-                            initials: character.initials,
-                            color: character.avatarColor,
-                            imageAsset: character.imageAsset,
-                            radius: 24,
+                          Container(
+                            padding: const EdgeInsets.all(2),
+                            decoration: BoxDecoration(
+                              shape: BoxShape.circle,
+                              border: Border.all(
+                                color: character.avatarColor,
+                                width: 2,
+                              ),
+                            ),
+                            child: CharacterAvatar(
+                              initials: character.initials,
+                              color: character.avatarColor,
+                              imageAsset: character.imageAsset,
+                              radius: 24,
+                            ),
                           ),
                           const SizedBox(height: 4),
                           Text(character.name, style: Theme.of(context).textTheme.labelSmall),
@@ -162,6 +251,31 @@ class _CategoryGrid extends StatelessWidget {
           accent: const Color(0xFFF178A6),
           onTap: () => onOpenTab(3),
         ),
+      ],
+    );
+  }
+}
+
+/// Section heading with a short red bar, like a pit-board marker.
+class _SectionTitle extends StatelessWidget {
+  final String text;
+
+  const _SectionTitle(this.text);
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      children: [
+        Container(
+          width: 4,
+          height: 18,
+          decoration: BoxDecoration(
+            color: AppColors.primary,
+            borderRadius: BorderRadius.circular(2),
+          ),
+        ),
+        const SizedBox(width: AppSpacing.sm),
+        Text(text, style: Theme.of(context).textTheme.titleMedium),
       ],
     );
   }

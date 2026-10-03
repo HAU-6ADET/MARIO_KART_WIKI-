@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../widgets/app_scaffold.dart';
+
 import '../data/mock_data.dart';
 import '../theme/theme.dart';
 import '../widgets/app_bottom_nav.dart';
@@ -30,7 +32,7 @@ class KartGuideScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return AppScaffold(
       appBar: AppBar(title: const Text('Karts & Bikes')),
       bottomNavigationBar:
           AppBottomNav(currentIndex: 2, onTap: (i) => _openTab(context, i)),
