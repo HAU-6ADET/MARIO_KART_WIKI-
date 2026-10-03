@@ -72,7 +72,7 @@ jobs:
           channel: stable
 
       - if: steps.check.outputs.ready == 'true'
-        run: flutter pub get
+        run: dart pub get
 
       # Neither of these blocks your deploy: a failing test should not take your
       # live link down. They are here so you find out before your grader does.
