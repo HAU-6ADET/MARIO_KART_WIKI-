@@ -16,11 +16,11 @@ The mockup contains the main screens of the Mario Kart Wiki, including the home 
 
 ### Tracks Screen
 
-![Tracks Screen](04-track-list.png)
+![Tracks Screen](assets/04-track-list.png)
 
 ### favorite Screen
 
-![Detail Screen](05-favorites.png)
+![Detail Screen](assets/05-favorites.png)
 
 ## Wireframes
 
