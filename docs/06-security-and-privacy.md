@@ -1,42 +1,46 @@
 # Security and privacy
 
-This repository is public. Fill this in honestly and date it; it is checked as
-part of grading.
+This repository is public. The following security and privacy checks were
+reviewed for the Mario Kart Wiki project.
 
-**Last checked:** YYYY-MM-DD
+**Last checked:** 2026-10-03
 
 ## What this app stores
 
 | Data | Where it lives | Who can see it |
 | --- | --- | --- |
-| e.g. the user's task list | on the device (shared_preferences) | only that user |
+| Mario Kart game information | Local application data | Anyone using the app |
+| Character information | Local application data | Anyone using the app |
+| Track information | Local application data | Anyone using the app |
+| Vehicle information | Local application data | Anyone using the app |
+| Item information | Local application data | Anyone using the app |
+| Images and descriptions | Project assets / local application data | Anyone using the app |
+
+The application does not currently collect or store personal user information.
 
 ## Secrets
 
-- Values my app needs at run time: _(list the names, not the values)_
-- Where they live locally: `.env`, which is git-ignored
-- Where the deploy workflow gets them: repository secrets (Settings > Secrets
-  and variables > Actions; the walkthrough is on page 12 of
-  `content/extending-your-app/` in your workspace)
-- Anything my deployed web build carries that a visitor could read, and why that
-  is acceptable: _(a Supabase anon key protected by RLS, a Firebase config
-  protected by rules, or nothing)_
+- Values my app needs at run time: **None**
+- Where they live locally: **N/A — no runtime secrets are currently required**
+- Where the deploy workflow gets them: **N/A — no deployment secrets are currently required**
+- Anything my deployed web build carries that a visitor could read, and why
+  that is acceptable: **Nothing sensitive. The application currently does not
+  contain private API keys, authentication credentials, or other secrets.**
 
 ## What protects the data on the service side
 
-- Firestore rules / Supabase RLS policies: _(paste or summarize them; "test mode"
-  is not an answer)_
-- If nothing leaves the device, say that instead.
+Nothing leaves the device or application for a backend service at this stage.
+The Mario Kart Wiki currently does not use Firestore, Supabase, or another
+backend database.
 
 ## Checklist
 
-- [ ] `.env` (or `env.json`) is in `.gitignore`, and `.env.example` is committed
-- [ ] `git log -p | grep -i "api_key\|secret\|password\|token"` finds nothing real
-- [ ] No service account file, keystore or `service_role` key anywhere in the repo
-- [ ] Security rules or RLS policies written and tested, not left open
-- [ ] No real personal data in sample data, screenshots or the video
-- [ ] No course or university credentials anywhere
-- [ ] Anyone whose data appears in a test was asked first
+- [x] `.env` (or `env.json`) is in `.gitignore`, and `.env.example` is committed
+- [x] `git log -p | grep -i "api_key\|secret\|password\|token"` finds nothing real
+- [x] No service account file, keystore or `service_role` key anywhere in the repo
+- [x] Security rules or RLS policies written and tested, not left open — **N/A because the app has no backend service**
+- [x] No real personal data in sample data, screenshots or the video
+- [x] No course or university credentials anywhere
+- [x] Anyone whose data appears in a test was asked first — **N/A because no real personal data is used**
 
-If you found and revoked a key while doing this, say so here. Catching it is the
-right outcome, not an embarrassment.
+No keys were found or revoked during this security review.
