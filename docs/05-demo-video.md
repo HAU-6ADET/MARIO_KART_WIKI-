@@ -1,9 +1,16 @@
 # Demo video
 
 **File:** `demo.mp4` in this folder, or the hosted link (see below)
+NAME: MARIO_KART_WIKI.DEMO
 FILE LINK: https://drive.google.com/file/d/1gxJtzw4TVuFHfKFSobKS_KBr1Bs-sfSO/view?usp=drive_link
+
 **Length:** aim for 3 to 5 minutes
+
+LENGHT OF THE VIDEO
+7:05 Minutes
+
 **Recorded on:**
+
 OBS
 
 ## What it shows
