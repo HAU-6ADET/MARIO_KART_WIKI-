@@ -18,7 +18,7 @@ At least six entries. One per real use. Every entry needs a commit link.
 **Tool:** Claude (Anthropic), claude.ai chat.
 
 **What I asked for:**  
-Make my line-art image (`MAIN.jpg`) the main background of the whole Flutter app.
+CREATE OR MAKE A IMAGE BACKGROUND COLOR THAT MAKES THE THEME MORE EYE PLEASIONG WITH THE USER
 
 **What it gave back:**  
 An `AppScaffold` widget that paints the image behind every screen, with a dark base color and adjustable opacity. It also added an `AppBackdrop` setting in `theme.dart` and a transparent app bar. Every screen's `Scaffold` was replaced with `AppScaffold`.
