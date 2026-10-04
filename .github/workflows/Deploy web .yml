@@ -10,6 +10,7 @@ permissions:
   pages: write
   id-token: write
 
+# Only one deploy at a time; a newer push cancels an older one.
 concurrency:
   group: pages
   cancel-in-progress: true
@@ -21,17 +22,66 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
+      # Fails nothing, but tells you loudly if the kart design never made it
+      # into the commit (the usual reason "my changes are not on the site").
+      - name: Check the kart design files are in this commit
+        run: |
+          {
+            echo "### Deploying commit \`${GITHUB_SHA::7}\`"
+            echo ""
+            git log -1 --pretty='%s'
+            echo ""
+          } >> "$GITHUB_STEP_SUMMARY"
+          for f in \
+            lib/data/kart_extras.dart \
+            lib/widgets/kart_card.dart \
+            lib/widgets/kart_illustration.dart \
+            lib/screens/kart_guide_screen.dart \
+            lib/screens/kart_detail_screen.dart \
+            assets/background/main.jpg; do
+            if [ -f "$f" ]; then
+              echo "ok       $f"
+              echo "- ok: \`$f\`" >> "$GITHUB_STEP_SUMMARY"
+            else
+              echo "::warning file=$f::Not in the repo, so it is NOT on the site. Run: git add -A, git commit, git push"
+              echo "- MISSING: \`$f\` (run git add -A, git commit, git push)" >> "$GITHUB_STEP_SUMMARY"
+            fi
+          done
+
       - name: Set up Flutter
         uses: subosito/flutter-action@v2
         with:
           channel: stable
           cache: true
 
+      - name: Show Flutter version
+        run: flutter --version
+
+      # "flutter pub get", NOT "dart pub get": this project depends on the
+      # Flutter SDK, which plain Dart cannot resolve.
       - name: Install dependencies
         run: flutter pub get
 
+      # --pwa-strategy=none turns off Flutter's offline cache (service
+      # worker), which otherwise keeps showing visitors the OLD version of
+      # the app after a new deploy. If this Flutter version no longer has the
+      # flag, the second command builds without it.
+      # The base href must match the repo name, or the live site loads blank.
       - name: Build web
-        run: flutter build web --release --base-href "/${{ github.event.repository.name }}/"
+        run: |
+          BASE="/${{ github.event.repository.name }}/"
+          flutter build web --release --pwa-strategy=none --base-href "$BASE" \
+            || flutter build web --release --base-href "$BASE"
+
+      # A tiny file you can open on the live site to see which commit is live.
+      - name: Stamp the build
+        run: |
+          {
+            echo "commit:  $GITHUB_SHA"
+            echo "built:   $(date -u +'%Y-%m-%d %H:%M:%S UTC')"
+            echo "message: $(git log -1 --pretty='%s')"
+          } > build/web/deployed-commit.txt
+          cat build/web/deployed-commit.txt
 
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
@@ -48,3 +98,6 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
+
+      - name: Show the live link
+        run: echo "Live at ${{ steps.deployment.outputs.page_url }}" >> "$GITHUB_STEP_SUMMARY"
