@@ -93,12 +93,44 @@ class RacingTrackCard extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
+                  if (extras.tagline.isNotEmpty) ...[
+                    Text(
+                      extras.tagline,
+                      style: textTheme.titleMedium?.copyWith(
+                        fontSize: 14,
+                        fontStyle: FontStyle.italic,
+                        color: difficultyColor,
+                      ),
+                    ),
+                    const SizedBox(height: 2),
+                  ],
                   Text(
                     extras.overview,
                     style: textTheme.bodyMedium,
-                    maxLines: 2,
+                    maxLines: 3,
                     overflow: TextOverflow.ellipsis,
                   ),
+                  if (extras.highlights.isNotEmpty) ...[
+                    const SizedBox(height: AppSpacing.sm + 2),
+                    Wrap(
+                      spacing: 6,
+                      runSpacing: 6,
+                      children: [
+                        for (final tag in extras.highlights)
+                          Container(
+                            padding: const EdgeInsets.symmetric(
+                              horizontal: 8,
+                              vertical: 3,
+                            ),
+                            decoration: BoxDecoration(
+                              color: AppColors.surfaceHigh,
+                              borderRadius: BorderRadius.circular(20),
+                            ),
+                            child: Text(tag, style: textTheme.labelSmall),
+                          ),
+                      ],
+                    ),
+                  ],
                   const SizedBox(height: AppSpacing.md),
                   Row(
                     children: [
@@ -111,6 +143,17 @@ class RacingTrackCard extends StatelessWidget {
                         ),
                       ),
                       const Spacer(),
+                      const Icon(
+                        Icons.speed_rounded,
+                        size: 16,
+                        color: AppColors.textSecondary,
+                      ),
+                      const SizedBox(width: 4),
+                      Text(
+                        'CHALLENGE ${extras.challenge}',
+                        style: textTheme.labelSmall,
+                      ),
+                      const SizedBox(width: AppSpacing.md - 4),
                       const Icon(
                         Icons.loop_rounded,
                         size: 16,
